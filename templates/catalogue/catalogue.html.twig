@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catalogue{% endblock %}
+
+{% block body %}
+<div class="ajouter">
+<div class="btn-success"><a href="#"> Ajouter de reparateur </a></div>
+</div>
+<div class="container">
+<div class="card">
+<img src="/image/master.png" alt="Person" class="card__image">
+<p class="card__name" style="color:#1D1C1C">Pierre Gerland</p>
+
+<div class="grid-container">
+<div class="grid-child-posts">
+<img src="/image/location-pin.png">
+</div>
+<div class="grid-child-followers" style="color:#FFBE55">
+ Bordeaux
+ </div>
+ </div>
+ <div class="card-boy">
+<p class="prix" style="color:#F48282"> 30€/h</p>
+<p style="color:#F48282">Apple</p>
+<p> CDR est la clinique du téléphone 
+portable, smartphone, ordinateur
+ PC et MAC.</p>
+ </div>
+ <div class="grid-container">
+ <div class="grid-child-posts">
+<img src="/image/phone.png">
+</div>
+<div class="grid-child-followers" style="color:#2A94F4">
+<p class="phone">05569433566 </p>
+</div>
+</div>
+
+<div class="btn-success"><a href="#"> Modifier </a></div>
+<div class="btn-cancel"><a href="#"> Supprimer </a></div>
+
+</div>
+
+
+
+
+{% endblock %}

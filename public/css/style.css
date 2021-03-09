@@ -1,0 +1,146 @@
+.nav {
+  overflow: hidden;
+  position: relative;
+  top: 0;
+  width: 100%;
+  display: flex;
+}
+
+.nav a {
+  float: right;
+  display: block;
+  color: #707070;
+  padding: 36px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.logo img {
+  padding: 31px;
+  width: 138px;
+}
+
+.title {
+  color: #707070;
+  font-size: 36px;
+  text-align: center;
+  padding-top: 13%;
+  padding-right: 22%;
+  position: fixed;
+  left: 5%;
+}
+
+.button {
+  color: white;
+  padding: 16px 48px;
+  display: inline-block;
+  text-decoration: none;
+  font-size: 22px;
+  background-color: #2A94F4;
+  position: relative;
+  left: -3%;
+}
+
+.btn-success {
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  line-height: 1.5;
+  padding: 0.75em 2em;
+  letter-spacing: 0.05rem;
+  font-size: 22px;
+  background-color: #0E538C;
+  width: 18rem;
+}
+
+.btn-success a {
+  color: white;
+  text-decoration: none;
+}
+
+.btn-cancel a {
+  color: white;
+  text-decoration: none;
+}
+
+.btn-cancel {
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  line-height: 1.5;
+  padding: 0.75em 2em;
+  letter-spacing: 0.05rem;
+  font-size: 22px;
+  background-color: #F48282;
+  width: 18rem;
+}
+
+.ordi img {
+  height: 720px;
+  float: right;
+  padding-top: 4%;
+}
+
+body {
+  font-family: "HelveticaNeue";
+}
+
+h1, h5 {
+  font-weight: 100;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 300px 300px 300px;
+  justify-content: center;
+  text-align: center;
+  padding-top: 9%;
+}
+
+.card {
+  background-color: #E9F4FE;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: -10px 3px 23px #ececec;
+  color: #707070;
+  width: 378px;
+}
+
+.card__name {
+  margin-top: 15px;
+  font-size: 1.5em;
+}
+
+.card__image {
+  height: 160px;
+  width: 160px;
+  margin-top: 20px;
+}
+
+.grid-container {
+  display: grid;
+  text-align: center;
+  grid-template-columns: 1fr;
+  grid-gap: 5px;
+  margin: 10px;
+}
+
+.grid-container img {
+  width: 20px;
+}
+
+.prix {
+  font-size: 44px;
+}
+
+.phone {
+  font-size: 30px;
+}
+
+.ajouter {
+  text-align: center;
+  padding-top: 5%;
+}
+
+/*# sourceMappingURL=style.css.map */
