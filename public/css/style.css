@@ -24,7 +24,7 @@
   color: #707070;
   font-size: 36px;
   text-align: center;
-  padding-top: 13%;
+  padding-top: 7%;
   padding-right: 22%;
   position: fixed;
   left: 5%;
@@ -50,7 +50,7 @@
   letter-spacing: 0.05rem;
   font-size: 22px;
   background-color: #0E538C;
-  width: 18rem;
+  width: 307px;
 }
 
 .btn-success a {
@@ -72,13 +72,16 @@
   letter-spacing: 0.05rem;
   font-size: 22px;
   background-color: #F48282;
-  width: 18rem;
+  width: 307px;
 }
 
 .ordi img {
   height: 720px;
-  float: right;
-  padding-top: 4%;
+}
+
+.ordi {
+  position: fixed;
+  left: 30%;
 }
 
 body {
@@ -91,10 +94,13 @@ h1, h5 {
 
 .container {
   display: grid;
-  grid-template-columns: 300px 300px 300px;
+  grid-gap: 50px;
+  grid-template-columns: 400px 400px 400px;
   justify-content: center;
   text-align: center;
   padding-top: 9%;
+  flex-direction: column;
+  height: 100%;
 }
 
 .card {
@@ -104,7 +110,6 @@ h1, h5 {
   align-items: center;
   box-shadow: -10px 3px 23px #ececec;
   color: #707070;
-  width: 378px;
 }
 
 .card__name {
@@ -122,8 +127,6 @@ h1, h5 {
   display: grid;
   text-align: center;
   grid-template-columns: 1fr;
-  grid-gap: 5px;
-  margin: 10px;
 }
 
 .grid-container img {
@@ -138,9 +141,39 @@ h1, h5 {
   font-size: 30px;
 }
 
+.grid-child-followers {
+  font-size: 20px;
+}
+
+.category {
+  font-size: 20px;
+}
+
 .ajouter {
   text-align: center;
   padding-top: 5%;
+}
+
+#change {
+  text-align: center;
+}
+
+label {
+  margin: 20px;
+}
+
+#reparation div {
+  margin: 20px;
+}
+
+input {
+  width: 500px;
+  height: 41px;
+}
+
+textarea {
+  height: 114px;
+  width: 500px;
 }
 
 /*# sourceMappingURL=style.css.map */

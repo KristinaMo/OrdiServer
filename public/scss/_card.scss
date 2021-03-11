@@ -1,22 +1,24 @@
 .container{
     display:grid;
-   
-    //grid-gap: 50px;
-    grid-template-columns: 300px 300px 300px;
+    grid-gap: 50px;
+    grid-template-columns: 400px 400px 400px;
     justify-content: center;
     text-align: center;
     padding-top:9%;
+    flex-direction: column;
+    height: 100%;
 }
 
 .card{
 
     background-color: #E9F4FE;
     display: flex;
+  
     flex-direction: column;
     align-items: center;
     box-shadow: -10px 3px 23px #ececec;
     color:#707070; 
-    width: 378px;
+    
 }
 
 .card__name {
@@ -34,8 +36,7 @@
     display: grid;
     text-align: center;
     grid-template-columns: 1fr;
-    grid-gap: 5px;
-    margin: 10px;
+   
   }
 
   .grid-container img{
@@ -48,4 +49,12 @@
 
 .phone{
     font-size: 30px;
+}
+
+.grid-child-followers{
+  font-size: 20px;
+}
+
+.category{
+  font-size: 20px;
 }

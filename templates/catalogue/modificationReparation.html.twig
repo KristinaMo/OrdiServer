@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block title %}Modification{% endblock %}
+
+
+{% block body %} 
+<section id="change">
+<div class="titre">
+{% if isModification %}
+
+<h3> Modification de {{reparation.nom}} </h3>
+
+{% else %}
+
+<h3> Ajouter d'un reparateur </h3>
+
+{% endif %}
+
+</div>
+
+
+
+{{form_start(form)}}
+
+   {{form_widget(form)}}
+
+   
+  
+   <div class="btn-cancel"><a href="#"> Enregistrer </a></div>
+ 
+{{form_end(form)}}
+</section>
+
+{% endblock %}

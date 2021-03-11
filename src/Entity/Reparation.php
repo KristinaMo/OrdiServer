@@ -25,7 +25,7 @@ class Reparation
     /**
      * @ORM\Column(type="text")
      */
-    private $comments;
+    private $comment;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -33,19 +33,24 @@ class Reparation
     private $image;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=255)
      */
     private $contact;
 
     /**
-     * @ORM\OneToMany(targetEntity=Category::class, mappedBy="category")
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="category")
      */
     private $category;
 
     /**
      * @ORM\ManyToOne(targetEntity=Ville::class, inversedBy="ville")
      */
-    private $nom_reparation;
+    private $ville;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $prix;
 
     public function getId(): ?int
     {
@@ -64,14 +69,14 @@ class Reparation
         return $this;
     }
 
-    public function getComments(): ?string
+    public function getComment(): ?string
     {
-        return $this->comments;
+        return $this->comment;
     }
 
-    public function setComments(string $comments): self
+    public function setComment(string $comment): self
     {
-        $this->comments = $comments;
+        $this->comment = $comment;
 
         return $this;
     }
@@ -88,12 +93,12 @@ class Reparation
         return $this;
     }
 
-    public function getContact(): ?int
+    public function getContact(): ?string
     {
         return $this->contact;
     }
 
-    public function setContact(int $contact): self
+    public function setContact(string $contact): self
     {
         $this->contact = $contact;
 
@@ -112,14 +117,26 @@ class Reparation
         return $this;
     }
 
-    public function getNomReparation(): ?Ville
+    public function getVille(): ?Ville
     {
-        return $this->nom_reparation;
+        return $this->ville;
     }
 
-    public function setNomReparation(?Ville $nom_reparation): self
+    public function setVille(?Ville $ville): self
     {
-        $this->nom_reparation = $nom_reparation;
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+    public function getPrix(): ?int
+    {
+        return $this->prix;
+    }
+
+    public function setPrix(int $prix): self
+    {
+        $this->prix = $prix;
 
         return $this;
     }

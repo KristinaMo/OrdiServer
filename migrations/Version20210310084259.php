@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20210309143344 extends AbstractMigration
+final class Version20210310084259 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,7 +22,10 @@ final class Version20210309143344 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE ville ADD nom_reparation VARCHAR(255) NOT NULL');
+        $this->addSql('CREATE TABLE category (id INT AUTO_INCREMENT NOT NULL, nom_reparation VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
+        $this->addSql('ALTER TABLE reparation ADD category_id INT DEFAULT NULL');
+        $this->addSql('ALTER TABLE reparation ADD CONSTRAINT FK_8FDF219D12469DE2 FOREIGN KEY (category_id) REFERENCES category (id)');
+        $this->addSql('CREATE INDEX IDX_8FDF219D12469DE2 ON reparation (category_id)');
     }
 
     public function down(Schema $schema) : void
@@ -30,6 +33,9 @@ final class Version20210309143344 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE ville DROP nom_reparation');
+        $this->addSql('ALTER TABLE reparation DROP FOREIGN KEY FK_8FDF219D12469DE2');
+        $this->addSql('DROP TABLE category');
+        $this->addSql('DROP INDEX IDX_8FDF219D12469DE2 ON reparation');
+        $this->addSql('ALTER TABLE reparation DROP category_id');
     }
 }

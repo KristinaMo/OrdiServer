@@ -20,23 +20,40 @@ class Ville
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity=Reparation::class, mappedBy="nom_reparation")
-     */
-    private $ville;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $nom_reparation;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Reparation::class, mappedBy="ville")
+     */
+    private $ville;
 
     public function __construct()
     {
         $this->ville = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->nom_reparation;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getNomReparation(): ?string
+    {
+        return $this->nom_reparation;
+    }
+
+    public function setNomReparation(string $nom_reparation): self
+    {
+        $this->nom_reparation = $nom_reparation;
+
+        return $this;
     }
 
     /**
@@ -51,7 +68,7 @@ class Ville
     {
         if (!$this->ville->contains($ville)) {
             $this->ville[] = $ville;
-            $ville->setNomReparation($this);
+            $ville->setVille($this);
         }
 
         return $this;
@@ -61,22 +78,10 @@ class Ville
     {
         if ($this->ville->removeElement($ville)) {
             // set the owning side to null (unless already changed)
-            if ($ville->getNomReparation() === $this) {
-                $ville->setNomReparation(null);
+            if ($ville->getVille() === $this) {
+                $ville->setVille(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getNomReparation(): ?string
-    {
-        return $this->nom_reparation;
-    }
-
-    public function setNomReparation(string $nom_reparation): self
-    {
-        $this->nom_reparation = $nom_reparation;
 
         return $this;
     }
