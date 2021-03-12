@@ -4,10 +4,21 @@
 
 {% block body %}
 
+{% if not app.user %}
+
+
+  {% else %}
+
 <div class="ajouter">
-<div class="btn-success"><a href="#"> Ajouter de reparateur </a></div>
+<div class="btn-success"><a href="{{path('catalogue_creation')}}"> Ajouter de reparateur </a></div>
+{% endif %}
 </div>
+
+
+
+
 <div class="container">
+
 
 {% for reparation in reparations %}
 
@@ -36,14 +47,32 @@
  <div class="grid-child-posts">
 <img src="/image/phone.png">
 </div>
+
+
+{% if not app.user %}
+
+ {% else %}
+  
 <div class="grid-child-followers" style="color:#2A94F4">
 <p class="phone"> {{reparation.contact}} </p>
+
 </div>
+{% endif %}
 </div>
+
+
+ {% if app.user and (app.user is same as(reparation.author) or app.user.id == 1) %}
 
 <div class="btn-success"><a href="{{path('catalogue_modification', {'id' : reparation.id} )}}"> Modifier </a></div>
-<div class="btn-cancel"><a href="#"> Supprimer </a></div>
+<form method="POST" action="{{path('catalogue_suppression', {'id': reparation.id})}}">
+<input type="submit" class="btn-cancel" value="Supprimer">
+<input type="hidden" name="_method" value="delete">
+<input type="hidden" name="_token" value="{{csrf_token('SUP' ~ reparation.id)}}">
+</form>
 
+{% else %}
+
+{% endif %}
 </div>
 
 </div>

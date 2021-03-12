@@ -17,12 +17,19 @@
         </div>
         <a href="{{path("ordi")}}">Accueil</a>
         <a href="{{path("catalogue")}}">Catalogue</a>
-        <a href="#">Connexion</a>
+       
+
+         {% if not app.user %}
+
+        <a href="{{path('connexion')}}">Connexion</a>
+         <a href="{{path('inscription')}}">Inscription</a>
          
-       <a href="#">Inscription</a>
+       {% else %}
           
-       <a href="#">Deconnexion</a>
-        
+       <a href="{{path('deconnexion')}}">Deconnexion</a>
+       
+
+        {% endif %}
            </div>
               </div>
         

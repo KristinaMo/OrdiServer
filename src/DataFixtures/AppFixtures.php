@@ -31,6 +31,7 @@ class AppFixtures extends Fixture
             ->setContact(5569433566)
             ->setCategory($c1)
             ->setVille($v1)
+
         ;
 
         $manager->persist($r1);
@@ -53,6 +54,7 @@ class AppFixtures extends Fixture
             ->setContact(5569433577)
             ->setCategory($c2)
             ->setVille($v2)
+
         ;
 
         $manager->persist($r2);
@@ -75,6 +77,7 @@ class AppFixtures extends Fixture
             ->setContact(5569433588)
             ->setCategory($c3)
             ->setVille($v3)
+
         ;
         $manager->persist($r3);
 

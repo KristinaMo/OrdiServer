@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+
+{% block titre %}Inscription{% endblock %}
+
+{% block body %}
+{{ form_start(form) }}
+     {{ form_row(form.username,{"attr":{"placeholder":"username"}, "label":"Votre nom d'utilisateur"}) }}
+     {{ form_row(form.password,{"attr":{"placeholder":"password"}, "label":"Votre password"}) }}
+      {{ form_widget(form) }}
+      <input type="submit" class="btn" value="Valider">
+      {{ form_end(form) }}
+{% endblock %}

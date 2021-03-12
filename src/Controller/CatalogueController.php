@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 class CatalogueController extends AbstractController
 {
@@ -29,7 +30,7 @@ class CatalogueController extends AbstractController
      * @Route("/catalogue/creation", name="catalogue_creation")
      * @Route("/catalogue/{id}", name="catalogue_modification", methods="GET|POST")
      */
-    public function ajoutEtModif(Reparation $reparation = null, Request $request, EntityManagerInterface $entityManager): Response
+    public function ajoutEtModif(Reparation $reparation = null, Request $request, EntityManagerInterface $entityManager, Security $security): Response
     {
         if (!$reparation) {
             $reparation = new Reparation();
@@ -41,6 +42,8 @@ class CatalogueController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $user = $security->getUser();
+            $reparation->setAuthor($user);
             $modif = null !== $reparation->getId();    //Verifier si ID existe
             $entityManager->persist($reparation);
             $entityManager->flush();
@@ -54,5 +57,19 @@ class CatalogueController extends AbstractController
             'form' => $form->createView(),
             'isModification' => null !== $reparation->getId(),
         ]);
+    }
+
+    /**
+     * @Route("/catalogue/{id}", name="catalogue_suppression", methods="delete")
+     */
+    public function suppression(Reparation $reparation, Request $request, EntityManagerInterface $entityManager): Response
+    {
+        if ($this->isCsrfTokenValid('SUP'.$reparation->getId(), $request->get('_token'))) {
+            $entityManager->remove($reparation);
+            $entityManager->flush();
+            $this->addFlash('success', 'La suppression a été effectuée');
+
+            return $this->redirectToRoute('catalogue');
+        }
     }
 }

@@ -38,12 +38,12 @@ class Reparation
     private $contact;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="category")
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="category", cascade={"persist"})
      */
     private $category;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Ville::class, inversedBy="ville")
+     * @ORM\ManyToOne(targetEntity=Ville::class, inversedBy="ville", cascade={"persist"})
      */
     private $ville;
 
@@ -51,6 +51,12 @@ class Reparation
      * @ORM\Column(type="integer")
      */
     private $prix;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Utilisateur::class, inversedBy="reparation", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $author;
 
     public function getId(): ?int
     {
@@ -137,6 +143,18 @@ class Reparation
     public function setPrix(int $prix): self
     {
         $this->prix = $prix;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?Utilisateur
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(Utilisateur $author): self
+    {
+        $this->author = $author;
 
         return $this;
     }
