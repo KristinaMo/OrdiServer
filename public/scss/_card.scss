@@ -1,8 +1,8 @@
 .container{
     display:grid;
     grid-gap: 50px;
-    grid-template-columns: 400px 400px 400px;
-    justify-content: center;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    
     text-align: center;
     padding-top:9%;
     flex-direction: column;

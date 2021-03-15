@@ -1,3 +1,7 @@
+#header{
+    padding-top: 8%;
+}
+
 .ordi img{
     height: 720px;
 }
@@ -5,4 +9,123 @@
 .ordi{
     position: fixed;
     left: 30%;
+}
+
+@media only screen and (max-width: 320px) {
+    .ordi img {
+        height: 184px;
+        
+    }
+    .ordi{
+        left: 0 !important;
+        top:19% !important;
+     }
+}
+
+@media only screen and (min-width: 320px){
+    .ordi img{
+          left: 19px;
+          height: 184px;
+    }
+
+    .ordi{
+        left: 19px;
+    }
+}
+
+@media only screen and (max-width:400px){
+    
+
+    .title{
+        font-size: 23px;
+        padding-top: 60%;
+        left:24%;
+    }
+
+    .button{
+        font-size: 14px;
+        left:0;
+    }
+    h5{
+        font-size: 14px;
+    }
+}
+
+
+@media only screen and (min-width:400px){
+ .ordi{
+     left: 8px;
+ }
+  .ordi img{
+    height: 241px;
+  }
+
+  .title{
+    left: 24%;
+    padding-top: 56%;
+    padding-right: none !important;
+    font-size: 23px;
+  }
+  .button{
+    font-size: 14px;
+  }
+}
+
+@media only screen and (min-width:600px){
+   .ordi img{
+       height: 307px;
+       position: fixed;
+       left: 30%;
+   }
+
+   .title{
+    text-align: center;
+    padding-top: 7%;
+    padding-right: 22%;
+    position: fixed;
+    left: 5%;
+   }
+}
+@media only screen and (max-width: 768px){
+    .ordi{
+        top: 15%;
+      }
+     
+
+}
+@media only screen and (min-width:768px){
+    .ordi img{
+        height: 318px;
+    }
+    
+    .ordi{
+        position: fixed;
+        left: 30%;
+    }
+    .title{
+    font-size: 22px;
+    text-align: center;
+    padding-top: 7%;
+    padding-right: 22%;
+    position: fixed;
+    left:5%;
+    }
+
+    .button{
+        font-size: 16px;
+    }
+}
+
+
+@media only screen and (min-width:900px){
+    .ordi img{
+        height: 600px;
+    }
+    .button{
+        font-size: 22px;
+    }
+    .title{
+        
+            font-size: 36px;
+    }
 }
