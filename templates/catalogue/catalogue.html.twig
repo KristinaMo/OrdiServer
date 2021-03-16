@@ -4,6 +4,37 @@
 
 {% block body %}
 
+<div class="navbar">
+
+ <input type="checkbox" id="nav-toggle">
+  <div class="logo">
+  <img src="/image/OrdiService.png">
+  </div>
+ <div class="links">
+  <a href="{{path("ordi")}}">Accueil</a>
+  <a href="{{path("catalogue")}}">Catalogue</a>
+      
+   {% if not app.user %}
+
+  <a href="{{path('connexion')}}">Connexion</a>
+ <a href="{{path('inscription')}}">Inscription</a>
+        
+   {% else %}
+   <a href="{{path('deconnexion')}}">Deconnexion</a>  
+    {% endif %}
+
+ </div>
+ <label for="nav-toggle" class="icon-burger">
+ <div class="line"></div>
+ <div class="line"></div>
+ <div class="line"></div>
+  </label>
+       
+</div>
+        
+
+   <section id="catalogue">
+
 {% if not app.user %}
 
 
@@ -61,7 +92,7 @@
 </div>
 
 
- {% if app.user and (app.user is same as(reparation.author) or app.user.id == 1) %}
+ {% if app.user and (app.user is same as(reparation.author) or app.user.id == 9) %}
 
 <div class="btn-success"><a href="{{path('catalogue_modification', {'id' : reparation.id} )}}"> Modifier </a></div>
 <form method="POST" action="{{path('catalogue_suppression', {'id': reparation.id})}}">
@@ -78,6 +109,6 @@
 </div>
 {% endfor %}
 </div>
-
+</section>
 
 {% endblock %}

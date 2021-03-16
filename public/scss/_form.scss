@@ -1,7 +1,31 @@
-#change{
-    text-align: center;
+
+
+.btn-cancel-btn{
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    line-height: 0.5;
+    padding: 24px;
+    letter-spacing: 0.05rem;
+    font-size: 20px;
+    background-color: #F48282;
+    width: 400px;
+    color: white;
+    position: relative;
+    left: 72px
+}
+.btn-pimary{
+    background-color: #F48282;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: white;
 }
 
+.titre{
+    margin: 27px;
+}
 label{
     margin: 20px;
 }
@@ -12,9 +36,60 @@ label{
 input{
     width: 500px;
     height: 41px;
+    margin: 10px;
+    border: 1px solid;
 }
 
 textarea{
     height: 114px;
     width: 500px;
+    margin-left: 2%;
+    border: 1px solid;
 }
+
+/*#reparation div:nth-child(4){
+ margin-right: 3%;
+}
+:nth-child(5){
+    margin-left: 3% !important;
+}
+:nth-child(6){
+    margin-right: 8% !important;
+}
+
+:nth-child(7){
+    margin-right: 8% !important;
+}*/
+
+#reparation{
+    width: 500px;
+    padding: 0;
+    text-align: center;
+}
+
+#reparation_category{
+    margin-left: -3% !important;
+}
+#reparation_ville{
+    margin-left: -3% !important;
+}
+
+
+.inscription{
+    text-align: center;
+    padding-top: 12%;
+    width: 500px;
+    position: relative;
+    left: 23%;
+    right: 0;
+}
+
+.connexion{
+    text-align: center;
+    padding-top: 12%;
+    width: 500px;
+    position: relative;
+    left: 23%;
+    right: 0;
+}
+

@@ -4,6 +4,27 @@
   top: 0;
   width: 100%;
   display: flex;
+  text-align: center;
+  flex: 1;
+}
+
+.navbar {
+  overflow: hidden;
+  position: relative;
+  top: 0;
+  width: 100%;
+  display: flex;
+  text-align: center;
+  flex: 1;
+}
+
+.navbar a {
+  float: right;
+  display: block;
+  color: #707070;
+  padding: 36px;
+  text-decoration: none;
+  font-size: 20px;
 }
 
 .nav a {
@@ -25,6 +46,15 @@
 }
 
 .nav .icon-burger {
+  display: none;
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+}
+
+.navbar .icon-burger {
   display: none;
   position: absolute;
   right: 5%;
@@ -67,13 +97,29 @@
     display: block;
   }
 
+  .navbar .icon-burger {
+    display: block;
+  }
+
   .nav {
     background-color: #E9F4FE;
+  }
+
+  .navbar {
+    background-color: white;
     position: fixed;
   }
 
   .nav a {
     background-color: white;
+  }
+
+  .navbar a {
+    background-color: white;
+  }
+
+  .navbar a:hover {
+    color: #F48282;
   }
 
   .nav a:hover {
@@ -86,6 +132,10 @@
 
   .logo {
     float: none;
+  }
+
+  .navbar :checked ~ .links {
+    bottom: 0;
   }
 
   .nav :checked ~ .links {
@@ -346,7 +396,10 @@ h1, h5 {
 
 .ajouter {
   text-align: center;
-  padding-top: 5%;
+}
+
+#catalogue {
+  padding-top: 13%;
 }
 
 @media only screen and (max-width: 768px) {
@@ -354,8 +407,32 @@ h1, h5 {
     padding-top: 37%;
   }
 }
-#change {
-  text-align: center;
+.btn-cancel-btn {
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  line-height: 0.5;
+  padding: 24px;
+  letter-spacing: 0.05rem;
+  font-size: 20px;
+  background-color: #F48282;
+  width: 400px;
+  color: white;
+  position: relative;
+  left: 72px;
+}
+
+.btn-pimary {
+  background-color: #F48282;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: white;
+}
+
+.titre {
+  margin: 27px;
 }
 
 label {
@@ -369,11 +446,60 @@ label {
 input {
   width: 500px;
   height: 41px;
+  margin: 10px;
+  border: 1px solid;
 }
 
 textarea {
   height: 114px;
   width: 500px;
+  margin-left: 2%;
+  border: 1px solid;
+}
+
+/*#reparation div:nth-child(4){
+ margin-right: 3%;
+}
+:nth-child(5){
+    margin-left: 3% !important;
+}
+:nth-child(6){
+    margin-right: 8% !important;
+}
+
+:nth-child(7){
+    margin-right: 8% !important;
+}*/
+#reparation {
+  width: 500px;
+  padding: 0;
+  text-align: center;
+}
+
+#reparation_category {
+  margin-left: -3% !important;
+}
+
+#reparation_ville {
+  margin-left: -3% !important;
+}
+
+.inscription {
+  text-align: center;
+  padding-top: 12%;
+  width: 500px;
+  position: relative;
+  left: 23%;
+  right: 0;
+}
+
+.connexion {
+  text-align: center;
+  padding-top: 12%;
+  width: 500px;
+  position: relative;
+  left: 23%;
+  right: 0;
 }
 
 /*# sourceMappingURL=style.css.map */
