@@ -53,7 +53,7 @@ class Reparation
     private $prix;
 
     /**
-     * @ORM\OneToOne(targetEntity=Utilisateur::class, inversedBy="reparation", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Utilisateur::class, inversedBy="reparation", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $author;

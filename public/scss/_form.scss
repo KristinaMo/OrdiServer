@@ -11,8 +11,8 @@
     background-color: #F48282;
     width: 400px;
     color: white;
-    position: relative;
-    left: 72px
+  
+    
 }
 .btn-pimary{
     background-color: #F48282;
@@ -25,6 +25,7 @@
 
 .titre{
     margin: 27px;
+    text-align: center;
 }
 label{
     margin: 20px;
@@ -64,7 +65,9 @@ textarea{
 #reparation{
     width: 500px;
     padding: 0;
-    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+
 }
 
 #reparation_category{

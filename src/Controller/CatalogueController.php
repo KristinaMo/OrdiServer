@@ -42,9 +42,9 @@ class CatalogueController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $modif = null !== $reparation->getId();
             $user = $security->getUser();
-            $reparation->setAuthor($user);
-            $modif = null !== $reparation->getId();    //Verifier si ID existe
+            $reparation->setAuthor($user);    //Verifier si ID existe
             $entityManager->persist($reparation);
             $entityManager->flush();
             $this->addFlash('success', 'La modification a été effectuée');

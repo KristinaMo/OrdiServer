@@ -41,7 +41,7 @@ class Utilisateur implements UserInterface
     private $verificationPassword;
 
     /**
-     * @ORM\OneToOne(targetEntity=Reparation::class, mappedBy="author", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Reparation::class, mappedBy="author", cascade={"persist"})
      */
     private $reparation;
 

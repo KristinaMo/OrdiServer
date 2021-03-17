@@ -4,7 +4,7 @@
 
 {% block body %}
 
-<div class="navbar">
+ <div class="navbar">
 
  <input type="checkbox" id="nav-toggle">
   <div class="logo">
@@ -16,11 +16,14 @@
       
    {% if not app.user %}
 
-  <a href="{{path('connexion')}}">Connexion</a>
+      <a href="{{path('connexion')}}">Connexion</a>
  <a href="{{path('inscription')}}">Inscription</a>
+
         
    {% else %}
-   <a href="{{path('deconnexion')}}">Deconnexion</a>  
+   
+  <a href="{{path('deconnexion')}}">Deconnexion</a> 
+   
     {% endif %}
 
  </div>
@@ -35,17 +38,20 @@
 
    <section id="catalogue">
 
-{% if not app.user %}
+   <div class="titre-catalogue">
+   <h1> Choisi ton réparateur</h1>
 
+   </div>
+
+{% if  not app.user %}
 
   {% else %}
-
 <div class="ajouter">
 <div class="btn-success"><a href="{{path('catalogue_creation')}}"> Ajouter de reparateur </a></div>
+
 {% endif %}
+
 </div>
-
-
 
 
 <div class="container">
@@ -87,12 +93,12 @@
 <div class="grid-child-followers" style="color:#2A94F4">
 <p class="phone"> {{reparation.contact}} </p>
 
-</div>
+</div> 
 {% endif %}
 </div>
 
 
- {% if app.user and (app.user is same as(reparation.author) or app.user.id == 9) %}
+ {% if app.user and (app.user is same as(reparation.author) or app.user.id == 12) %}
 
 <div class="btn-success"><a href="{{path('catalogue_modification', {'id' : reparation.id} )}}"> Modifier </a></div>
 <form method="POST" action="{{path('catalogue_suppression', {'id': reparation.id})}}">

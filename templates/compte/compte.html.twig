@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CompteController!{% endblock %}
+
+{% block body %}
+<div class="nav">
+ <input type="checkbox" id="nav-toggle">
+ <div class="logo">
+ <img src="/image/OrdiService.png">
+ </div>
+ <div class="links">
+ <a href="{{path("ordi")}}">Accueil</a>
+ <a href="{{path("catalogue")}}">Catalogue</a>
+      
+       
+ {% if not app.user %}
+
+ <a href="{{path('connexion')}}">Connexion</a>
+ <a href="{{path('inscription')}}">Inscription</a>
+        
+         
+ {% else %}
+          
+ <a href="{{path('deconnexion')}}">Deconnexion</a>
+       
+ {% endif %}
+  </div>
+ <label for="nav-toggle" class="icon-burger">
+ <div class="line"></div>
+ <div class="line"></div>
+ <div class="line"></div>
+ </label>
+       
+ </div>
+
+ <div class="titre-catalogue">
+ <h2> Mon compte </h2>
+
+ </div>
+
+ <div class="card">
+<img src="{{ asset('image/' ~ reparation.image)}}" alt="Person" class="card__image">
+<p class="card__name" style="color:#1D1C1C">{{reparation.nom}}</p>
+
+<div class="grid-container">
+
+<div class="grid-child-posts">
+<img src="/image/location-pin.png">
+</div>
+
+<div class="grid-child-followers" style="color:#FFBE55">
+ {{reparation.ville}}
+ </div>
+
+ </div>
+ 
+ <div class="card-boy">
+<p class="prix" style="color:#F48282"> {{reparation.prix}}€/h</p>
+<p class="category" style="color:#F48282">{{reparation.category}}</p>
+<p> {{reparation.comment}}</p>
+ 
+ <div class="grid-container">
+ <div class="grid-child-posts">
+<img src="/image/phone.png">
+</div>
+        
+
+
+
+
+{% endblock %}
