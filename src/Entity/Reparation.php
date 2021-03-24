@@ -101,8 +101,7 @@ class Reparation implements Serializable
     public function unserialize($serialized)
     {
         list(
-            $this->author
-            ) = unserialize($serialized);
+            $this->author) = unserialize($serialized);
     }
 
     public function getId(): ?int

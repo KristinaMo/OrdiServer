@@ -6,17 +6,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class TestController extends AbstractController
+class ContactController extends AbstractController
 {
     /**
-     * @Route("/test", name="test")
+     * @Route("/contact", name="contact")
      */
     public function index(): Response
     {
-        $random = random_int(0, 100);
-
-        return $this->render('test/test.html.twig', [
-            'random' => $random,
+        return $this->render('contact/index.html.twig', [
+            'controller_name' => 'ContactController',
         ]);
     }
 }

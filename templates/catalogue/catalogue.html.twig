@@ -13,6 +13,8 @@
  <div class="links">
   <a href="{{path("ordi")}}">Accueil</a>
   <a href="{{path("catalogue")}}">Catalogue</a>
+  <a href="{{path("contact")}}">Nous contacter</a>
+
       
    {% if not app.user %}
 
@@ -60,13 +62,14 @@
 </form> 
 
 
-<div class="container">
 
 {% if reparations|length < 1 %}
-  <div class="grid-container">
+  <div class="container-grid">
     Aucune annonce ne correspond à vos critères de recherche
   </div>
 {% endif %}
+
+<div class="container">
 
 {% for reparation in reparations %}
 
