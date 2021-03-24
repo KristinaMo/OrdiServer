@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\UtilisateurRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Serializable;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -13,7 +14,7 @@ use Symfony\Component\Validator\Constraints\Length;
  * @ORM\Entity(repositoryClass=UtilisateurRepository::class)
  * @UniqueEntity(fields={"username"},message="L'utilisateur existe déjà")
  */
-class Utilisateur implements UserInterface
+class Utilisateur implements UserInterface, Serializable
 {
     /**
      * @ORM\Id
@@ -44,6 +45,27 @@ class Utilisateur implements UserInterface
      * @ORM\OneToOne(targetEntity=Reparation::class, mappedBy="author", cascade={"persist"})
      */
     private $reparation;
+
+    public function serialize()
+    {
+        return serialize([
+            $this->id,
+            $this->username,
+            $this->password,
+            $this->verificationPassword,
+            $this->reparation,
+        ]);
+    }
+
+    public function unserialize($serialized)
+    {
+        list(
+            $this->id,
+            $this->username,
+            $this->password,
+            $this->verificationPassword,
+            $this->reparation) = unserialize($serialized);
+    }
 
     public function getId(): ?int
     {

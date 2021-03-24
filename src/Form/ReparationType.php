@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Category;
 use App\Entity\Ville;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,7 +16,7 @@ class ReparationType extends AbstractType
         $builder
             ->add('nom')
             ->add('comment')
-            ->add('image')
+            ->add('imageFile', FileType::class, ['required' => false])
             ->add('contact')
             ->add('prix')
             ->add('category', CategoryType::class, ['data_class' => Category::class])

@@ -4,11 +4,16 @@ namespace App\Entity;
 
 use App\Repository\ReparationRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Serializable;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=ReparationRepository::class)
+ * @Vich\Uploadable
  */
-class Reparation
+class Reparation implements Serializable
 {
     /**
      * @ORM\Id
@@ -31,6 +36,11 @@ class Reparation
      * @ORM\Column(type="string", length=255)
      */
     private $image;
+
+    /**
+     * @Vich\UploadableField(mapping="catalogue_image", fileNameProperty="image")
+     */
+    private $imageFile;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -58,6 +68,43 @@ class Reparation
      */
     private $author;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $updatedAt;
+
+    /*public function __sleep//()
+    {
+        $ref = new \ReflectionClass(__CLASS__);
+        $props = $ref->getProperties(\ReflectionProperty::IS_PROTECTED);
+
+        $serialize_fields = [];
+
+        foreach ($props as $prop) {
+            if ($prop->getDeclaringClass()->getName() !== $ref->getName()) {
+                continue;
+                $serialize_fields[] = $prop->name;
+            }
+            $serialize_fields[] = $prop->getName;
+        }
+
+        return $serialize_fields;
+    }*/
+
+    public function serialize()
+    {
+        return serialize([
+            $this->author,
+        ]);
+    }
+
+    public function unserialize($serialized)
+    {
+        list(
+            $this->author
+            ) = unserialize($serialized);
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -78,6 +125,7 @@ class Reparation
     public function getComment(): ?string
     {
         return $this->comment;
+        $this->image;
     }
 
     public function setComment(string $comment): self
@@ -92,7 +140,7 @@ class Reparation
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 
@@ -155,6 +203,32 @@ class Reparation
     public function setAuthor(Utilisateur $author): self
     {
         $this->author = $author;
+
+        return $this;
+    }
+
+    public function setImageFile(?File $imageFile = null): void
+    {
+        $this->imageFile = $imageFile;
+
+        if ($this->imageFile instanceof UploadedFile) {
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

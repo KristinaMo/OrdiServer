@@ -20,9 +20,16 @@
         letter-spacing: 0.05rem;
         font-size: 22px;
         background-color: #0E538C;
-        width: 312px;;
-        
+        width: 312px;
+        transition-duration: 500ms;     
     }
+    .btn-success:hover{
+        top: 5px;
+        box-shadow: 0 0px 0px #3c354a;
+        background-color: #F48282;
+    }
+
+    
 
     .btn-success a{
         color: white;

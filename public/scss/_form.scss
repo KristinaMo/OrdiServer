@@ -11,9 +11,21 @@
     background-color: #F48282;
     width: 400px;
     color: white;
-  
-    
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
 }
+  
+    @media only screen and (max-width: 768px){
+        .btn-cancel-btn{
+               position: relative;
+               left: 25%;
+               transform:none;
+  
+       }
+   }
+
+
 .btn-pimary{
     background-color: #F48282;
     display: inline-block;
@@ -96,3 +108,19 @@ textarea{
     right: 0;
 }
 
+.form-search{
+    text-align: center;
+    padding: 20px;
+}
+
+.form-search input{
+    width: 300px;
+}
+
+button{
+    padding: 10px;
+    color: white;
+    background-color: #F48282;
+    border: none;
+    
+}

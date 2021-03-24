@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Reparation;
 use App\Form\ReparationType;
 use App\Repository\ReparationRepository;
+use App\Repository\VilleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,7 +29,7 @@ class CatalogueController extends AbstractController
 
     /**
      * @Route("/catalogue/creation", name="catalogue_creation")
-     * @Route("/catalogue/{id}", name="catalogue_modification", methods="GET|POST")
+     * @Route("/catalogue/{id<\d+>}", name="catalogue_modification", methods="GET|POST")
      */
     public function ajoutEtModif(Reparation $reparation = null, Request $request, EntityManagerInterface $entityManager, Security $security): Response
     {
@@ -45,6 +46,7 @@ class CatalogueController extends AbstractController
             $modif = null !== $reparation->getId();
             $user = $security->getUser();
             $reparation->setAuthor($user);    //Verifier si ID existe
+            // dd($reparation);
             $entityManager->persist($reparation);
             $entityManager->flush();
             $this->addFlash('success', 'La modification a été effectuée');
@@ -60,7 +62,7 @@ class CatalogueController extends AbstractController
     }
 
     /**
-     * @Route("/catalogue/{id}", name="catalogue_suppression", methods="delete")
+     * @Route("/catalogue/{id<\d+>}", name="catalogue_suppression", methods="delete")
      */
     public function suppression(Reparation $reparation, Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -71,5 +73,24 @@ class CatalogueController extends AbstractController
 
             return $this->redirectToRoute('catalogue');
         }
+    }
+
+    /**
+     * @Route("/catalogue/search", name="filtreVille")
+     *
+     * @param mixed $ville
+     */
+    public function reparationParVille(ReparationRepository $repository, VilleRepository $repositoryV, $ville = null, Request $request): Response
+    {
+        $ville = $request->query->get('ville');
+        $reparations = $repository->findByVille($ville);
+        $villes = $repositoryV->findAll();
+        // dd($reparations);
+
+        return $this->render('catalogue/catalogue.html.twig', [
+            'reparations' => $reparations,
+            'villes' => $villes,
+            'isVille' => true,
+        ]);
     }
 }

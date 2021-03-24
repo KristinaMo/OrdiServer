@@ -210,6 +210,13 @@ h1, h5 {
   font-size: 22px;
   background-color: #0E538C;
   width: 312px;
+  transition-duration: 500ms;
+}
+
+.btn-success:hover {
+  top: 5px;
+  box-shadow: 0 0px 0px #3c354a;
+  background-color: #F48282;
 }
 
 .btn-success a {
@@ -233,10 +240,6 @@ h1, h5 {
   background-color: #F48282;
   width: 400px;
   color: white;
-}
-
-#header {
-  padding-top: 8%;
 }
 
 .ordi img {
@@ -440,8 +443,18 @@ h1, h5 {
   background-color: #F48282;
   width: 400px;
   color: white;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 
+@media only screen and (max-width: 768px) {
+  .btn-cancel-btn {
+    position: relative;
+    left: 25%;
+    transform: none;
+  }
+}
 .btn-pimary {
   background-color: #F48282;
   display: inline-block;
@@ -522,6 +535,22 @@ textarea {
   position: relative;
   left: 23%;
   right: 0;
+}
+
+.form-search {
+  text-align: center;
+  padding: 20px;
+}
+
+.form-search input {
+  width: 300px;
+}
+
+button {
+  padding: 10px;
+  color: white;
+  background-color: #F48282;
+  border: none;
 }
 
 /*# sourceMappingURL=style.css.map */

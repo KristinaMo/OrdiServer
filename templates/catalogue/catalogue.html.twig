@@ -34,30 +34,43 @@
   </label>
        
 </div>
-        
+
 
    <section id="catalogue">
 
    <div class="titre-catalogue">
    <h1> Choisi ton réparateur</h1>
-
    </div>
+
+
 
 {% if  not app.user %}
 
   {% else %}
 <div class="ajouter">
-<div class="btn-success"><a href="{{path('catalogue_creation')}}"> Ajouter de reparateur </a></div>
+<div class="btn-success"><a href="{{path('catalogue_creation')}}"> Ajouter d'un reparateur </a></div>
 
 {% endif %}
 
 </div>
 
+ <form class="form-search" action="{{path('filtreVille')}}">
+ <input type="search"  name="ville" placeholder="Ville">
+ <button type="submit">Recherche</button> 
+</form> 
+
 
 <div class="container">
 
+{% if reparations|length < 1 %}
+  <div class="grid-container">
+    Aucune annonce ne correspond à vos critères de recherche
+  </div>
+{% endif %}
 
 {% for reparation in reparations %}
+
+
 
 <div class="card">
 <img src="{{ asset('image/' ~ reparation.image)}}" alt="Person" class="card__image">

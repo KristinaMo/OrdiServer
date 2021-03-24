@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block title %}Searching{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+
+{% for ville in villes %}
+
+<div class="ville">
+           <a href="{{ path('search', {'id' : reparation.id}) }}">{{ ville.nom.reparation }}</a>
+       </div>
+       
+       <form class="form-search" action="{{path('filtreVille')}}" method="POST">
+ <input type="search"  placeholder="Ville">
+ {{ form_widget(form) }}
+    <button type="submit">Recherche</button> 
+</form> 
+
+{% endfor %}
+{% endblock %}

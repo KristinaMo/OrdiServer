@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20210312132311 extends AbstractMigration
+final class Version20210324132333 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -22,9 +22,7 @@ final class Version20210312132311 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf('mysql' !== $this->connection->getDatabasePlatform()->getName(), 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE reparation ADD author_id INT NOT NULL');
-        $this->addSql('ALTER TABLE reparation ADD CONSTRAINT FK_8FDF219DF675F31B FOREIGN KEY (author_id) REFERENCES utilisateur (id)');
-        $this->addSql('CREATE UNIQUE INDEX UNIQ_8FDF219DF675F31B ON reparation (author_id)');
+        $this->addSql('ALTER TABLE reparation ADD updated_at DATETIME DEFAULT NULL');
     }
 
     public function down(Schema $schema): void
@@ -32,8 +30,6 @@ final class Version20210312132311 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf('mysql' !== $this->connection->getDatabasePlatform()->getName(), 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE reparation DROP FOREIGN KEY FK_8FDF219DF675F31B');
-        $this->addSql('DROP INDEX UNIQ_8FDF219DF675F31B ON reparation');
-        $this->addSql('ALTER TABLE reparation DROP author_id');
+        $this->addSql('ALTER TABLE reparation DROP updated_at');
     }
 }
